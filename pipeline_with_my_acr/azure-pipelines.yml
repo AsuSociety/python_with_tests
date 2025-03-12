@@ -22,7 +22,7 @@ jobs:
     displayName: "Check mainfe.py"
     container:
       image: "$(REPO_NAME):$(IMAGE_TAG)"
-      endpoint: "$(CONNECTION_SERVICE)"
+      endpoint: "rafael-devops-team"
     steps:
       - script: |
           cat /app/mainfe.py
