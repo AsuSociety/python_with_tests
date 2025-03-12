@@ -12,17 +12,17 @@ pool:
   vmImage: ubuntu-latest
 
 variables:
-  DOCKER_REGISTRY: "rafael-devops-team"
-  REPO_NAME: "Asus-azure-devops-fe"
+  CONNECTION_SERVICE: "rafael-devops-team"
+  REPO_NAME: "asus-azure-devops-fe"
   DOCKER_FILE_PATH: "$(Build.SourcesDirectory)/app/Dockerfile"
-  IMAGE_TAG: "$(Build.BuildId)"
+  IMAGE_TAG: "latest"
 
 jobs:
   - job: CheckMainfe
     displayName: "Check mainfe.py"
     container:
-      image: "asus-azure-devops-fe:latest"
-      endpoint: "rafael-devops-team"
+      image: "$(REPO_NAME):$(IMAGE_TAG)"
+      endpoint: "$(CONNECTION_SERVICE)"
     steps:
       - script: |
           cat /app/mainfe.py
